@@ -428,3 +428,87 @@
     100% {
     }
 }
+
+
+* {
+    box-sizing: border-box;
+}
+body { 
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: darkgrey;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 100px ;
+}
+ 
+ 
+.character {
+    border: 1px solid teal;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+ 
+.character-photo {
+    width: 200px;
+    height:  150px;
+    margin: 0 auto;
+    
+}
+
+.character-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid  teal;
+    border-radius: 5px;
+}
+
+
+/* 3 урок */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, san-selif;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 100px;
+}
+.wrapper {
+padding: 20px;
+border-radius: 10px;
+background: silver;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+gap: 10px;
+max-width: 800px;
+margin: auto;
+}
+ 
+button {
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: yellow;
+}
+.red {
+    background: red;
+}

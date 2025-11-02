@@ -75,3 +75,64 @@ prev.onclick = () => {
 }
 
 autoSlider(index)
+
+
+ // 4 Урок
+
+// DOM - Document Object Model
+
+// const button - document.getElementById('btn')
+  // const buttons = document.getElementsByClassName('btn')
+// const buttons = document.getElementsByTagName('button')
+
+
+//const button = document.querySelector('.btn')
+//const button = document.querySelector('#btn')
+//const button = document.querySelector('button')
+
+
+// console.log(button)
+
+// const buttons = document.querySelectorAll('.btn')
+// const wrapper = document.querySelectorAll('.wrapper')
+ // const buttonsInWrapper = wrapper.querySelectorAll('button')
+// console.log(buttonsInWrapper)
+
+
+
+// TOGGLE BUTTONS
+// buttons[0].classList.add('red')
+// buttons[0].classList.remove ('red')
+// console.log(buttons[0].classList.contains('RED'));
+
+
+
+// const wrapper = document.querySelector('.wrapper')
+// const buttons = document.querySelectorAll('button')
+
+
+
+
+// buttons.forEach((button) => {
+ // button.onclick = (event) => {
+ //  event.target.classList.toggle('red')
+//  } 
+
+// })
+
+// const newButton = document.createElement('button')
+// wrapper.appendChild(newButton)
+
+
+
+// Делегирование событий
+
+ // const wrapper = document.querySelector('.wrapper')
+
+ // wrapper.onclick = event => {
+// if (event.target.tagName.toLowerCase9() === 'button') {
+  //  event.target.classList.toggle('red')
+// }
+//  }
+
+
