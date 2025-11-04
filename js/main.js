@@ -135,4 +135,48 @@ autoSlider(index)
 // }
 //  }
 
+   // 4 Урок
 
+// JSON - JavaScript object notation
+// .html .pdf .mp3 .mp4 .json 
+
+// const object ={
+//     name: "John",
+//     age:42,
+// }
+// const newJson = JSON.stringify(object)
+// const newObject = JSON.parse(newJson)
+// console.log(newObject.name)
+
+//  AJAX - Asynhronosous Javascript and XML
+//  XML - eXtensible Markup Language - .xml
+//  HTML - HyperText Markup Language - .html
+
+//  HTTP - HyperText Transfer Protocol (опасно)
+//  HTTPS HyperText Transfer Protocol Secure (безопасно)
+
+//  XHR - XML HTTP Request
+
+//  HTTP Method
+
+
+//  CRUD
+//  create - POST
+//  read - GET
+//  update - PATCH
+//  delete - DELETE 
+
+ const button = document.querySelector('button');
+  button.onclick = () => {
+    const xhr = new XMLHttpRequest() // 1. Создание запроса
+    xhr.open('GET','data.json') // 2. Указание медота запроса и пути
+    xhr.setRequestHeader('Content-type', 'application/json') // 3. Указание заголовка
+    xhr.send() //4. Отправка запроса
+
+    xhr.onload = () => {
+        const data = JSON.parse(xhr.response)
+       document.querySelector('.name').innerHTML = data.name
+     document.querySelector('.name').innerHTML = data.age
+
+    }
+  }

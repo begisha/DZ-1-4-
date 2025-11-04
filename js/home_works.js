@@ -136,3 +136,49 @@ resetBtn.addEventListener('click', () => {
     updateCounter();
 });
 
+
+
+// DZ №4 (1 задание)
+const request = new XMLHttpRequest();
+request.open('GET', '../data/characters.json');
+request.setRequestHeader('Content-type', 'application/json');
+request.send();
+
+request.onload = function () {
+  if (request.status === 200) {
+    const data = JSON.parse(request.responseText);
+    const charactersList = document.querySelector('.characters-list');
+
+    data.forEach((character) => {
+      const card = document.createElement('div');
+      card.classList.add('character-card');
+      card.innerHTML = `
+        <div class="character-photo">
+          <img src="${character.photo}" alt="${character.name}">
+        </div>
+        <h3>${character.name}</h3>
+        <p>Возраст: ${character.age}</p>
+      `;
+      charactersList.append(card);
+    });
+  } else {
+    console.error('Ошибка загрузки characters.json:', request.status);
+  }
+};
+
+
+// DZ №4 (2 задание)
+const xhrBio = new XMLHttpRequest();
+xhrBio.open('GET', '../data/bio.json'); 
+xhrBio.send();
+
+xhrBio.onload = function () {
+  if (xhrBio.status === 200) {
+    const bioData = JSON.parse(xhrBio.responseText);
+    console.log('Данные из bio.json:', bioData);
+  } else {
+    console.error('Ошибка загрузки bio.json:', xhrBio.status);
+  }
+};
+
+

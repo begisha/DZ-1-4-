@@ -55,5 +55,5 @@ function showModalByScroll() {
 
 window.addEventListener('scroll', showModalByScroll);
 
-
+ 
 modalTrigger.addEventListener('click', () => clearTimeout(modalTimer));

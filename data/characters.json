@@ -1,17 +1,23 @@
 [
   {
-    "name": "",
-    "age": 0,
-    "photo": "url"
+    "name": "Сакура Харуно",
+    "age": 20,
+    "photo": "https://i.pinimg.com/originals/24/27/d9/2427d923457a1fa78c9509f9dd47328d.gif"
   },
   {
-    "name": "",
-    "age": 0,
-    "photo": "url"
+    "name": "Хината Хьюга",
+    "age": 20,
+    "photo": "https://i.pinimg.com/originals/14/2a/0e/142a0e16319dd281b8fe20072fbbc0b5.gif"
   },
   {
-    "name": "",
-    "age": 0,
-    "photo": "url"
+    "name": "Ино Яманака",
+    "age": 20,
+    "photo": "https://i.redd.it/712hwesxx8w71.gif"
+  },
+  
+  {
+    "name": "ТенТен",
+    "age": 20,
+    "photo": "https://i.pinimg.com/originals/f9/72/15/f9721573f7f163aa8be271deb50d43c8.gif"
   }
 ]
