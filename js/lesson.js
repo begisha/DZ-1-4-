@@ -263,3 +263,8 @@ setInterval(() => {
   hideTabContent();
   showTabContent(currentIndex);
 }, 3000); 
+
+
+
+
+
