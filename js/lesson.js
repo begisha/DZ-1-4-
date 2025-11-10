@@ -265,6 +265,98 @@ setInterval(() => {
 }, 3000); 
 
 
+// 5 урок
+const somInput = document.querySelector('#som');
+const usdInput = document.querySelector('#usd');
+
+const converter = (element, targetElement) => {
+  element.oninput = () => {
+    if (element.value === '') {
+      targetElement.value = '';
+      return;
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '../data/converter.json');
+    xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.send();
+
+    xhr.onload = () => {
+      const data = JSON.parse(xhr.response);
+
+      if (element.id === 'som') targetElement.value = (element.value / data.usd).toFixed(2);
+      if (element.id === 'usd') targetElement.value = (element.value * data.usd).toFixed(2);
+    };
+  };
+};
+
+converter(somInput, usdInput);
+converter(usdInput, somInput);
+
+  // somInput.oninput = () => {
+  //   const xhr = new  XMLHttpRequest()
+  //   xhr.open('GET', '../data/converter.json')
+  //   xhr.setRequestHeader('Content-type', 'application/json')
+  //   xhr.send()
+
+  //   xhr.onload = () => { 
+  //   const data = JSON.parse(xhr.response)
+  //   usdInput.value = (somInput.value / date.usd).toFixed(2)
+  //   }
+  // }
+
+  // usdInput.oninput = () => {
+  //   const xhr = new  XMLHttpRequest()
+  //   xhr.open('GET', '../data/converter.json')
+  //   xhr.setRequestHeader('Content-type', 'application/json')
+  //   xhr.send()
+
+  //   xhr.onload = () => { 
+  //   const data = JSON.parse(xhr.response)
+  //   somInput.value = (usdInput.value * date.usd).toFixed(2)
+  //   }
+  // }
+
+  // DRY - don't  repeat yourself
+  // KISS - keep  it super, stupid 
+
+  
+  // DZ№5
+
+  
+// DZ №5 
+
+
+const inputs = {
+  som: document.querySelector('#som'),
+  usd: document.querySelector('#usd'),
+  vnd: document.querySelector('#vnd')
+};
+
+const convertCurrency = (source) => {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', '../data/converter.json');
+  xhr.setRequestHeader('Content-type', 'application/json');
+  xhr.send();
+
+  xhr.onload = () => {
+    const rates = JSON.parse(xhr.response); // {usd: 87.45, vnd: 11.3116}
+
+    if (source.id === 'som') {
+      inputs.usd.value = (source.value / rates.usd).toFixed(2);
+      inputs.vnd.value = ((source.value / rates.usd) * rates.vnd).toFixed(2);
+    } else if (source.id === 'usd') {
+      inputs.som.value = (source.value * rates.usd).toFixed(2);
+      inputs.vnd.value = (source.value * rates.vnd).toFixed(2);
+    } else if (source.id === 'vnd') {
+      inputs.usd.value = (source.value / rates.vnd).toFixed(2);
+      inputs.som.value = ((source.value / rates.vnd) * rates.usd).toFixed(2);
+    }
+  };
+};
+for (let key in inputs) {
+  inputs[key].addEventListener('input', () => convertCurrency(inputs[key]));
+}
 
 
 
