@@ -359,4 +359,79 @@ for (let key in inputs) {
 }
 
 
+// //6  урок
 
+// const card = document.querySelector('.card')
+// const btnNext = document.querySelector('#btn-next')
+// const btnPrev = document.querySelector('#btn-prev')
+// let cardIndex = 0
+
+// btnNext.onclick = () => {
+//   cardIndex++
+//   fetch(`https://jsonplaceholder.typicode.com/todos/${cardIndex}`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const { title, completed, id} = data 
+//       card.innerHTML = `
+//         <p>${title}</p>
+//         <p style="color: ${completed ? "green" : "red"}">
+//           ${completed}
+//         </p>
+//         <span>${id}</span>
+//       `
+    
+//     })
+//   }
+
+  
+
+// DZ№6 (1-Доработать код)
+
+  const card = document.querySelector('.card');
+const btnNext = document.querySelector('#btn-next');
+const btnPrev = document.querySelector('#btn-prev');
+let cardIndex = 1; 
+const maxCard = 200; 
+
+const fetchCard = (index) => {
+  fetch(`https://jsonplaceholder.typicode.com/todos/${index}`)
+    .then(response => response.json())
+    .then(data => {
+      const { title, completed, id } = data;
+      card.innerHTML = `
+        <p>${title}</p>
+        <p style="color: ${completed ? "green" : "red"}">
+          ${completed}
+        </p>
+        <span>${id}</span>
+      `;
+    });
+};
+
+//показываем 1
+fetchCard(cardIndex);
+
+btnNext.onclick = () => {
+  cardIndex++;
+  if (cardIndex > maxCard) cardIndex = 1; 
+  fetchCard(cardIndex);
+};
+
+btnPrev.onclick = () => {
+  cardIndex--;
+  if (cardIndex < 1) cardIndex = maxCard; 
+  fetchCard(cardIndex);
+};
+
+
+// 2 Задание
+// сделать отдельный fetch запрос на это API: 'https://jsonplaceholder.typicode.com/posts'
+//  и отобразить данные просто в консоли
+//  fetch posts
+
+fetch('https://jsonplaceholder.typicode.com/posts')
+  .then(response => response.json())
+  .then(data => {
+    console.log('Данные с posts API:', data);
+  })
+  .catch(error => console.error('Ошибка при загрузке posts:', error));

@@ -180,3 +180,75 @@ autoSlider(index)
 
     }
   }
+
+
+// Hell Callback 
+//  Деструктуризация
+
+// setTimeout(() => {
+//   const product = {
+//     name: "Bread",
+//     price: 40
+//   }
+//   logger(product)
+//   setTimeout(() => {
+//     product.name = 'Milk'
+//     product.price = 100
+//     logger(product)
+//   }, 1500)
+//     logger(product)
+//   setTimeout(() => {
+//     product.name = 'Sugar'
+//     product.price = 200
+//     logger(product)
+//   }, 1500)
+//   logger(product)
+//   setTimeout(() => {
+//     product.name = 'Snicers'
+//     product.price = 150
+//     logger(product)
+//   }, 1500)
+// }, 2000)
+
+// const triggerError = () => {
+//     return throw new Error ('BEGISHA')
+// }
+// const logger = (product) => {
+//   const { name, price } = product
+//   console.log(`name: ${name}\nprice: ${price} som`)
+// }
+
+// console.log('Loading...')
+ 
+// // Promise- Обещание
+// // Promise---> pending (ожидание)---> fulfilled(выполнено) || rejected (отклонение)
+
+
+// const promise = new Promise((fun1, fun2) => {
+//     // throw new Error()
+//     setTimeout(() => {
+//         const product = {
+//             name: "Bread",
+//             price:40
+//         }
+//         logger(product)
+//         fun1()
+//         fun2()
+//     }, 2000)
+// })
+// console.log(promise)
+
+
+// XHR -> fetch
+// API - 
+//1 htpps://https://jsonplaceholder.typicode.com/todos
+//2 domen jsonplaceholder.typicode.com/todos
+//3 end point - /todos
+//4 ID - /nomber
+
+
+fetch('https://jsonplaceholder.typicode.com/todos')
+.then((response) => respons.json())
+.then((data) => data.forEach(item => {
+    document.body.append(document.createElement ('div').innerHTML = item.title);
+}))
