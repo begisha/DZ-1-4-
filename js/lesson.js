@@ -435,3 +435,159 @@ fetch('https://jsonplaceholder.typicode.com/posts')
     console.log('Данные с posts API:', data);
   })
   .catch(error => console.error('Ошибка при загрузке posts:', error));
+
+
+//7 урок\
+
+
+ //Weather
+
+ // API key 232c8bf706a5965fab326daf9249d5cf
+ //qery params - параметр запроса
+
+// https://api.openweathermap.org/data/2.5/weather
+
+const API = 'https://api.openweathermap.org/data/2.5/weather'
+const API_KEY = '232c8bf706a5965fab326daf9249d5cf'
+
+const searchInput = document.querySelector('#searchInput')
+const searchButton = document.querySelector('#search')
+const city = document.querySelector('.city')
+const temp = document.querySelector('.temp')
+
+searchButton.onclick = () => {
+  if(searchInput.value !== '') {
+  city.style.color= ''
+  fetch(`${API}?q=${searchInput.value}&units=metric&lang=ru&appid=${API_KEY}`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.name) {
+      city.innerHTML = data.name 
+      temp.innerHTML = Math.round(data.main.temp) + '℃'
+
+      }else{
+        city.innerHTML = 'Город не найден'
+         city.style.color= 'red'
+         temp.innerHTML = ''
+      }
+    })
+    searchInput.value = ''
+  }else {
+    city.innerHTML = 'Введите название города'
+        city.style.color= 'red'
+
+  }
+
+}
+
+// DZ№7 
+
+// 1) КОНВЕРТЕР ВАЛЮТ (async/await)
+async function getConverterData() {
+    try {
+        const response = await fetch('../data/converter.json');
+        if (!response.ok) throw new Error('Ошибка загрузки конвертера');
+        const data = await response.json();
+        console.log("Конвертер валют:", data);
+        return data;
+    } catch (error) {
+        console.error("Ошибка конвертера:", error);
+    }
+}
+
+// 2) CARD SWITCHER (async/await)
+async function getCards() {
+    try {
+        const response = await fetch('../data/cards.json');
+        if (!response.ok) throw new Error("Ошибка загрузки карточек!");
+
+        const data = await response.json();
+        console.log("Card Switcher данные:", data);
+        return data;
+
+    } catch (error) {
+        console.error("Ошибка card switcher:", error);
+    }
+}
+
+// 3) ПОИСК ПОГОДЫ (async/await)
+
+// Мой  API ключь:
+const WEATHER_API_KEY = "232c8bf706a5965fab326daf9249d5cf";
+
+async function getWeather(city) {
+    try {
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`
+        );
+
+        if (!response.ok) throw new Error("Город не найден!");
+
+        const data = await response.json();
+        console.log(`Погода в ${city}:`, data);
+
+        return data;
+
+    } catch (error) {
+        console.error("Ошибка погодного API:", error);
+    }
+}
+
+// 4) СТРАНИЦА С КАРТОЧКАМИ (GET запрос на https://jsonplaceholder)
+async function renderPostsCards() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+
+        if (!response.ok) throw new Error("Не удалось загрузить посты!");
+
+        const posts = await response.json();
+
+        console.log("Посты загружены:", posts);
+
+        const container = document.querySelector(".cards-container");
+
+        posts.slice(0, 10).forEach(post => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            card.innerHTML = `
+                <img src="https://via.placeholder.com/300" alt="image">
+                <h3>${post.title}</h3>
+                <p>${post.body}</p>
+            `;
+
+            container.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error("Ошибка загрузки карточек-постов:", error);
+    }
+}
+
+// 5) ПРОСТОЙ FETCH В КОНСОЛЬ 
+async function simpleConsoleFetch() {
+    try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const data = await response.json();
+        console.log("Данные из простого fetch:", data);
+    } catch (error) {
+        console.error("Ошибка простого fetch:", error);
+    }
+}
+
+
+
+// Функции для вызова
+
+// getConverterData();
+// getCards();
+// getWeather("Paris");
+// renderPostsCards();
+// simpleConsoleFetch();
+
+
+
+// 2- Задание 
+//  в папке  cartochki.html cartochki.js cartochki.css
+
+

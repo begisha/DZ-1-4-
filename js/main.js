@@ -252,3 +252,48 @@ fetch('https://jsonplaceholder.typicode.com/todos')
 .then((data) => data.forEach(item => {
     document.body.append(document.createElement ('div').innerHTML = item.title);
 }))
+
+
+//7 урок
+
+// mock api
+// async await
+// try catch
+
+//https://6916270ea7a34288a27c8109.mockapi.io/todos
+
+// const API = 'https://6916270ea7a34288a27c8109.mockapi.io/todos'
+
+// const getTodos = () => {
+//     fetch(API)
+//     .then(res =>res.json())
+//     .then (data => {
+//         console.log(data)
+//     }) 
+// }
+
+
+//https://6916270ea7a34288a27c8109.mockapi.io/todos
+
+const API = 'https://6916270ea7a34288a27c8109.mockapi.io/todos'
+
+const todos = document.querySelector('.todos')
+
+
+const getTodos = async () => {
+    try{
+        const response = await fetch(API)
+        const data = await response.json()
+        data.forEach((item) => {
+            const div = document.createElement('div')
+            div.classList.add('todo-item')
+            div.textContent = item.title
+            todos.appendChild(div)
+        })
+    } catch (error){
+        console.log(error)
+    }
+
+}
+  window.onload = () => getTodos()
+
