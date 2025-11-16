@@ -297,3 +297,70 @@ const getTodos = async () => {
 }
   window.onload = () => getTodos()
 
+
+
+
+
+/// DZ №7
+
+// Задание-1
+async function getConverterData() {
+    try {
+        const response = await fetch('../data/converter.json');
+        if (!response.ok) throw new Error('Ошибка загрузки конвертера');
+
+        const data = await response.json();
+        console.log("Конвертер валют:", data);
+
+        return data;
+    } catch (error) {
+        console.error("Ошибка конвертера:", error);
+    }
+}
+
+
+// Задание -2
+async function getCardsData() {
+    try {
+        const response = await fetch('../data/cards.json');
+        if (!response.ok) throw new Error('Ошибка загрузки карточек');
+
+        const data = await response.json();
+        console.log("Card Switcher данные:", data);
+
+        return data;
+    } catch (error) {
+        console.error("Ошибка card switcher:", error);
+    }
+}
+
+
+
+// Задание -3
+
+
+const WEATHER_API_KEY = "232c8bf706a5965fab326daf9249d5cf";
+
+async function getWeather(city) {
+    try {
+        const response = await fetch(
+           `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`
+        );
+
+        if (!response.ok) throw new Error("Город не найден!");
+
+        const data = await response.json();
+        console.log(`Погода в ${city}:`, data);
+
+        return data;
+    } catch (error) {
+        console.error("Ошибка погодного API:", error);
+    }
+}
+
+
+// вызовы
+
+// getConverterData();
+// getCardsData();
+// getWeather("Bishkek");
