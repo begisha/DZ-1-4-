@@ -302,6 +302,11 @@ const getTodos = async () => {
 
 
 /// DZ №7
+//  ПЕРЕПИСАТЬ ЗАПРОСЫ
+//   const xhr = new XMLHttpRequest();
+//   xhr.open('GET', '../data/converter.json');
+//   xhr.setRequestHeader('Content-type', 'application/json');
+//   xhr.send();
 
 // Задание-1
 async function getConverterData() {
